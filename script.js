@@ -1,5 +1,8 @@
-const circonferenza = document.querySelector("[data-logo]");
+const circonferenza = document.querySelectorAll("[data-logo]");
 
-circonferenza.addEventListener("click", () => {
-  circonferenza.classList.toggle("active");
+circonferenza.forEach((circonferenza) => {
+  circonferenza.addEventListener("click", () => {
+    circonferenza.classList.toggle("active");
+  });
 });
+

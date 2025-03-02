@@ -1,3 +1,12 @@
+:root {
+  --diametro: 207px;
+  --spessore: 20px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   background-color: #000000;
@@ -12,6 +21,12 @@ body {
   align-items: center;
 }
 
+.grafica {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
 .disegno {
   transform: rotate(0deg);
   -webkit-transition: transform 0.75s ease-in-out;
@@ -20,17 +35,107 @@ body {
   -o-transition: transform 0.75s ease-in-out;
   transition: transform 0.75s ease-in-out; 
 }
-
-.disegno.active {
-  transform: rotate(180deg);
-}
   
 .circonferenza {
   position: relative;
-  width: 240px; /* diametro della circonferenza */
-  height: 240px; /* diametro della circonferenza */
+  width: var(--diametro); /* diametro della circonferenza */
+  height: var(--diametro); /* diametro della circonferenza */
   border-radius: 50%; /* rende il rettangolo un cerchio */
-  border: 20px solid #ffffff; /* spessore e colore della circonferenza */
+  border: var(--spessore) solid #ffffff; /* spessore e colore della circonferenza */
+}
+
+.circonferenza__testo {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffff00;
+  font-size: 1.5rem;
+}
+
+.trapezio {
+  position: absolute;
+  bottom: -20px;
+  left: calc(50% - var(--spessore) / 2);
+  width: calc(var(--diametro) / 2);; /* lunghezza del rettangolo */
+  height: 20px; /* altezza del rettangolo (uguale allo spessore della circonferenza) */
+  background-color: #ffffff; /* colore del rettangolo */
+  transform: skewX(45deg); /* inclina il lato destro verso l'interno */
+}
+
+.trapezio--vertical {
+  bottom: 50%;
+  left: calc(var(--spessore) * -1);
+  width: 20px; /* altezza del rettangolo (uguale allo spessore della circonferenza) */
+  height: calc(var(--diametro) / 2);; /* lunghezza del rettangolo */
+  transform: skewY(45deg);
+}
+
+.circonferenza--sx::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--spessore) + ((var(--diametro) / 2) - var(--spessore)) / 2);
+  left: calc(var(--spessore) + ((var(--diametro) / 2) - var(--spessore)) / 2);
+  width: calc(((var(--diametro) / 2) - var(--spessore)) / 2);
+  height: calc(((var(--diametro) / 2) - var(--spessore)) / 2);
+  border-radius: 50%;
+  background-color: #fff;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.circonferenza--sx::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--spessore) + ((var(--diametro) / 2) - var(--spessore)) / 2);
+  left: calc(var(--spessore) + ((var(--diametro) / 2) - var(--spessore)) / 2);
+  width: calc(((var(--diametro) / 2) - var(--spessore)) / 2);
+  height: calc(((var(--diametro) / 2) - var(--spessore)) / 2);
+  border-radius: 50%;
+  background-color: #fff;
+  animation: pulse 2s infinite;
+  animation-delay: 1s;
+}
+
+.raggio-pulsante {
+  position: absolute;
+  top: calc(var(--spessore) + ((var(--diametro) / 2) - var(--spessore)) / 2);
+  left: calc(var(--spessore) + ((var(--diametro) / 2) - var(--spessore)) / 2);
+  width: calc(((var(--diametro) / 2) - var(--spessore)) / 2);
+  height: calc(((var(--diametro) / 2) - var(--spessore)) / 2);
+  border-radius: 50%;
+  background-color: #fff;
+  animation: raggio-pulsante 2s infinite;
+}
+
+@keyframes raggio-pulsante {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.disegno.active {
+  transform: rotate(180deg);
+
+  .circonferenza__testo {
+    transform: translate(-50%, -50%) rotate(-180deg)!important;
+  }
 }
 
 .disegno:hover {
@@ -38,16 +143,16 @@ body {
     border-color: #ffff00;
   }
 
-  .rettangolo {
+  .trapezio {
     background-color: #ffff00;
   }
-}
 
-.rettangolo {
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  width: 140px; /* lunghezza del rettangolo */
-  height: 20px; /* altezza del rettangolo (uguale allo spessore della circonferenza) */
-  background-color: #ffffff; /* colore del rettangolo */
+  .circonferenza--sx::before, .circonferenza--sx::after, .raggio-pulsante {
+    display: none ! important;
+  }
+
+  .circonferenza__testo {
+    display: block;
+    text-transform: uppercase;
+  }
 }
