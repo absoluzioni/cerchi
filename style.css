@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  background-color: #000000;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.disegno {
+  transform: rotate(0deg);
+  -webkit-transition: transform 0.75s ease-in-out;
+  -moz-transition: transform 0.75s ease-in-out;
+  -ms-transition: transform 0.75s ease-in-out;
+  -o-transition: transform 0.75s ease-in-out;
+  transition: transform 0.75s ease-in-out; 
+}
+
+.disegno.active {
+  transform: rotate(180deg);
+}
+  
+.circonferenza {
+  position: relative;
+  width: 240px; /* diametro della circonferenza */
+  height: 240px; /* diametro della circonferenza */
+  border-radius: 50%; /* rende il rettangolo un cerchio */
+  border: 20px solid #ffffff; /* spessore e colore della circonferenza */
+}
+
+.disegno:hover {
+  .circonferenza {
+    border-color: #ffff00;
+  }
+
+  .rettangolo {
+    background-color: #ffff00;
+  }
+}
+
+.rettangolo {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  width: 140px; /* lunghezza del rettangolo */
+  height: 20px; /* altezza del rettangolo (uguale allo spessore della circonferenza) */
+  background-color: #ffffff; /* colore del rettangolo */
+}
