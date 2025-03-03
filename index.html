@@ -2,26 +2,29 @@
 <html>
 <head>
   <title>Circonferenza con rettangolo tangente</title>
-  <link rel="stylesheet" href="style.css">  
+  <link rel="stylesheet" href="styles.css">  
 </head>
-<body>
-  <div class="container">
-    <div class="grafica">
-      <div class="disegno" data-logo>
-        <div class="circonferenza circonferenza--sx">
-          <div class="trapezio"></div>
-          <div class="raggio-pulsante"></div>
-          <div class="circonferenza__testo">About</div>
-        </div>
+<body class="main">
+  <div class="grafica">
+    <div class="disegno disegno--q">
+      <a href="#" class="disegno__menu disegno__menu--first dn">Who</a>
+      <a href="#" class="disegno__menu disegno__menu--second dn">Mission</a>
+      <a href="#" class="disegno__menu disegno__menu--third dn">Contact</a>
+
+      <div class="circonferenza circonferenza--sx" data-pseudo>
+        <div class="trapezio"></div>
+        <div class="pulsante dn"></div>
+        <div class="circonferenza__testo dn">About</div>
       </div>
-      <div class="disegno" data-logo>
-        <div class="circonferenza">
-          <div class="trapezio trapezio--vertical"></div>
-        </div>
+    </div>
+
+    <div class="disegno">
+      <div class="circonferenza">
+        <div class="trapezio trapezio--vertical"></div>
       </div>
     </div>
   </div>
-
+  <h1 class="frontpage-title">Italy q.b.</h1>
   <script src="script.js"></script>
 </body>
 </html>
